@@ -71,7 +71,7 @@ export const signup = async (req, res) => {
   } catch (error) {
     console.log('Error in Signup controller', error.message);
     res.status(500).json({
-      msg: error.message,
+      message: error.message,
     });
   }
 };

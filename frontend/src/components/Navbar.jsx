@@ -1,8 +1,9 @@
 import { ShoppingCart, UserPlus, LogIn, LogOut, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useUserStore } from "../stores/useUserStore";
 
 function Navbar() {
-  const user = true;
+  const {user, logout} = useUserStore();
   const isAdmin = false;
 
   return (
@@ -19,7 +20,7 @@ function Navbar() {
           <nav className="flex flex-wrap items-center gap-4">
             <Link
               to={"/"}
-              className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out"
+              className="text-gray-300 font-bold hover:text-emerald-400 transition duration-300 ease-in-out"
             >
               Home
             </Link>
@@ -41,7 +42,7 @@ function Navbar() {
             )}
 
             {user ? (
-              <button className="bg-gray-700 hover:bg-gray-600  text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center">
+              <button onClick={logout} className="bg-gray-700 hover:bg-gray-600 cursor-pointer  text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center">
                 <LogOut size={18} />
                 <span className="hidden sm:inline ml-2">Log Out</span>
               </button>
@@ -49,7 +50,7 @@ function Navbar() {
               <>
                 <Link
                   to={"/signup"}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 cursor-pointer rounded-md font-medium transition duration-300 ease-in-out flex items-center"
                 >
                   {/* 600, 700 */}
                   <UserPlus className="mr-2" size={18} />
@@ -57,7 +58,7 @@ function Navbar() {
                 </Link>
                 <Link
                   to={"/login"}
-                  className="bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded-md font-medium transition duration-300 ease-in-out flex items-center"
+                  className="bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 cursor-pointer rounded-md font-medium transition duration-300 ease-in-out flex items-center"
                 >
                   <LogIn className="mr-2" size={18} />
                   Login
