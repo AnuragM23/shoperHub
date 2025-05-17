@@ -16,17 +16,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json({limit: "10mb"}));
+app.use(express.json({ limit: "10mb" }));
 app.use(cookieParser());
 
-app.use("/api/auth", authRoutes); 
+app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/coupons", couponRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
-app.listen(PORT, ()=>{
-    console.log(`server is running at http://localhost:${PORT}`);
-    connectDB();
-})
+app.listen(PORT, () => {
+  console.log(`server is running at http://localhost:${PORT}`);
+  connectDB();
+});
